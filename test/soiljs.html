@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>soiljs</title>
+		<meta name="author" content="Gabriel Jürgens" />
+		<!-- Date: 2012-05-03 -->
+		<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="qunit/qunit.js"></script>
+		<script type="text/javascript" src="../soiljs.js"></script>
+		<script>
+			$(document).ready(function() {
+				/*
+				test("a basic test example", function() {
+					ok(true, "this test is fine");
+					var value = "hello";
+					equal(value, "hello", "We expect value to be hello");
+				});
+				module("Module A");
+
+				test("first test within module", function() {
+					ok(true, "all pass");
+				});
+				test("second test within module", function() {
+					ok(true, "all pass");
+				});
+				module("Module B");
+
+				test("some other test", function() {
+					expect(2);
+					equal(true, false, "failing test");
+					equal(true, true, "passing test");
+				});
+				*/
+				//alert(typeof soilJS);
+				module("Core");
+				test("Default global variable", function() {
+					notEqual(typeof soilJS, undefined, "global var soilJS is defined");
+				});
+				test("getVersion", function()
+					{
+						equal(typeof soilJS.getVersion, "function", "getVersion is a Function");
+						equal(typeof soilJS.getVersion(), "string", "getVersion retunrs a string");
+					}
+				)
+			});
+
+		</script>
+	</head>
+	<body>
+		<h1 id="qunit-header">QUnit example</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">
+			test markup, will be hidden
+		</div>
+	</body>
+</html>
