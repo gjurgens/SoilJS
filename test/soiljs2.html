@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>soiljs</title>
+		<meta name="author" content="Gabriel Jürgens" />
+		<!-- Date: 2012-05-03 -->
+		<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="qunit/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="qunit/qunit.js"></script>
+		<script type="text/javascript" src="../soiljs2.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				var MyClass = function(name) {
+					name = name === undefined ? "anonimous" : name;
+					this.test = function() {
+						return "Test OK " + name;
+					}
+				}
+				
+				oMyClass = soilJS(MyClass, ["soilJS Param 1", "soilJS Param 2"]);
+				oMyClass2 = soilJS(MyClass, ["soilJS2 Param 1", "soilJS2 Param 2"]);
+
+				var MyClassAlt = function(name) {
+					name = name === undefined ? "anonimous" : name;
+					this.test = function() {
+						return "Test OK ALT " + name;
+					}
+				}
+				oMyClassAlt = soilJS(MyClassAlt, ["soilJS Param 1", "soilJS Param 2"]);
+				oMyClassAlt2 = soilJS(MyClassAlt, ["soilJS2 Param 1", "soilJS2 Param 2"]);
+
+
+				module("Core");
+				test("Default global variable", function() {
+					notEqual(typeof soilJS, undefined, "global var soilJS is defined");
+					ok(oMyClass instanceof soilJS, "oMyClass is an instance of soilJS");
+					ok(oMyClass instanceof MyClass, "oMyClass is an instance of MyClass");
+					equal(typeof oMyClass.test(), "string", "oMyClass.test() retunrs a string");
+					equal(typeof oMyClass.soilFunction(), "string", "oMyClass.soilFunction() retunrs a string");
+					equal(oMyClass.soilFunction(), "yeah!", "oMyClass.soilFunction() retunrs a \"yeah!\"");
+					equal(oMyClass.test(), "Test OK soilJS Param 1", "oMyClass.soilFunction() retunrs a \"Test OK soilJS Param 1\"");
+					equal(oMyClass2.test(), "Test OK soilJS2 Param 1", "oMyClass2.soilFunction() retunrs a \"Test OK soilJS2 Param 1\"");
+
+
+					ok(oMyClassAlt instanceof soilJS, "oMyClassAlt is an instance of soilJS");
+					ok(oMyClassAlt instanceof MyClassAlt, "oMyClassAlt is an instance of MyClassAlt");
+					equal(typeof oMyClassAlt.test(), "string", "oMyClassAlt.test() retunrs a string");
+					equal(typeof oMyClassAlt.soilFunction(), "string", "oMyClassAlt.soilFunction() retunrs a string");
+					equal(oMyClassAlt.soilFunction(), "yeah!", "oMyClassAlt.soilFunction() retunrs a \"yeah!\"");
+					equal(oMyClassAlt.test(), "Test OK ALT soilJS Param 1", "oMyClassAlt.soilFunction() retunrs a \"Test OK ALT soilJS Param 1\"");
+					equal(oMyClassAlt2.test(), "Test OK ALT soilJS2 Param 1", "oMyClassAlt2.soilFunction() retunrs a \"Test OK ALT soilJS2 Param 1\"");
+
+				});
+
+			});
+
+		</script>
+	</head>
+	<body>
+		<h1 id="qunit-header">QUnit example</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">
+			test markup, will be hidden
+		</div>
+	</body>
+</html>
