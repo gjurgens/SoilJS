@@ -1,0 +1,1 @@
+define(["./bar"],function(a){var b={};return b.toString=function(){return"Im foo, and I've just called bar who says: "+a},b})

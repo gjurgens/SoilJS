@@ -1,0 +1,6 @@
+
+main.js
+----------------
+utils/bar.js
+utils/foo.js
+main.js

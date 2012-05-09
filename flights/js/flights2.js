@@ -1,0 +1,1 @@
+define(["soilJS/utils/foo", "helpers/itineraryDetail"],function(foo,itinerary){});

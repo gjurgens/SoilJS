@@ -1,0 +1,1 @@
+define("helpers/itineraryDetail",["../common/foo","../common/bar"],function(a,b){console.log("flights itineraryDetails: "+a),console.log("flights itineraryDetails: "+b)}),define("flights2",["soilJS/utils/foo","helpers/itineraryDetail"],function(a,b){})

@@ -1,0 +1,1 @@
+define(["../common/foo","../common/bar"],function(a,b){console.log("flights itinerary: "+a),console.log("flights itinerary: "+b)})

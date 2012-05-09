@@ -1,0 +1,1 @@
+define(["soilJS/utils/bar"],function(a){var b={};return b.toString=function(){return"Im base foo, and I've just called base bar who says: "+a},b})

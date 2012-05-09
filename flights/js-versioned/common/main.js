@@ -1,0 +1,1 @@
+define("common/bar",[],function(){var a={};return a.toString=function(){return"Im flights bar"},a}),define("common/foo",["./bar"],function(a){var b={};return b.toString=function(){return"Im flights foo, and I've just called flights bar who says: "+a},b}),define("common/main",["./foo","./bar"],function(){})

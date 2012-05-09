@@ -1,0 +1,16 @@
+
+common/main.js
+----------------
+common/bar.js
+common/foo.js
+common/main.js
+
+flights1.js
+----------------
+helpers/itinerary.js
+flights1.js
+
+flights2.js
+----------------
+helpers/itineraryDetail.js
+flights2.js

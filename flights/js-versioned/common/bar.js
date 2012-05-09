@@ -1,0 +1,1 @@
+define([],function(){var a={};return a.toString=function(){return"Im flights bar"},a})
