@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>soiljs</title>
+		<meta name="author" content="Gabriel Jürgens" />
+		<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript">
+			var require = {
+				paths : {
+					'jquery' : '/SoilJS/source/lib/jquery-1.7.2.min',
+					'qunit' : '/SoilJS/test/qunit/qunit',
+					'soilJS' : '/SoilJS/source'
+				},
+				priority : ["jquery"],
+				urlArgs : "bust=" + (new Date()).getTime()
+			};			
+		</script>
+		<script data-main="main" src="../source/lib/require.js"></script>
+	</head>
+	<body>
+		<h1 id="qunit-header">QUnit example</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">
+			test markup, will be hidden
+		</div>
+	</body>
+</html>
