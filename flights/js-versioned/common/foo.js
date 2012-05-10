@@ -1,1 +1,1 @@
-define(["./bar"],function(a){var b={};return b.toString=function(){return"Im flights foo, and I've just called flights bar who says: "+a},b})
+define(["./bar","jquery"],function(a){var b={};return b.toString=function(){return"Im flights foo, and I've just called flights bar who says: "+a},console.log($("body").html()),b})

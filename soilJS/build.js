@@ -3,7 +3,6 @@
     baseUrl: ".",
     dir: "js-versioned",
     paths: {
-        jquery: "empty:",
         soilJS: "../js-versioned"
     },
     modules: [
