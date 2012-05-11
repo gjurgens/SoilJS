@@ -1,7 +1,8 @@
+TestCore = TestCase("TestCore");
+TestCore.prototype.setUp = function() {
+}
+
 require(["soilJS/main"],function(main){
-	TestCore = TestCase("TestCore");
-	TestCore.prototype.setUp = function() {
-	}
 
 	TestCore.prototype.testReturns = function() {
 		assertFunction("require function declared", require);
@@ -12,12 +13,12 @@ require(["soilJS/main"],function(main){
 	
 });
 
+TestHelper = TestCase("TestHelper");
+TestHelper.prototype.setUp = function() {
+}
 require(["soilJS/helper"],function(helper){
-	TestCore = TestCase("TestHelper");
-	TestCore.prototype.setUp = function() {
-	}
 
-	TestCore.prototype.testReturns = function() {
+	TestHelper.prototype.testReturns = function() {
 		assertFunction("require function declared", require);
 		assertObject("helper object instatiated", helper);
 		assertEquals("helper.name", "helper", helper.name);
