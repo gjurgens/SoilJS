@@ -57,7 +57,7 @@
 				<executions>
 					<execution>
 						<id>Frontend Framework Builder</id>
-						<phase>package</phase>
+						<phase>test</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
