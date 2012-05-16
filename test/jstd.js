@@ -1,5 +1,5 @@
 TestMain = AsyncTestCase("TestMain");
-TestMain.prototype.testHelperReturns = function(queue) {
+TestMain.prototype.testMainReturns = function(queue) {
 	//Declare scope vars
 	var main = null;
 	
