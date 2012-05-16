@@ -1,3 +1,3 @@
 define(function(){
-	return {name: "helper"};
+	return {name: "helper", met:function(){return true;}};
 })

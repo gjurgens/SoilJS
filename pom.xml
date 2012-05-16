@@ -102,12 +102,8 @@
 				<artifactId>jstd-maven-plugin</artifactId>
 				<version>1.3.2.5</version>
 				<configuration>
-					<!-- port>4224</port -->
 					<basePath>${basedir}</basePath>
 					<config>test/jsTestDriver.conf</config>
-					<!-- debug>true</debug -->
-					<!-- verbose>true</verbose -->
-					<!-- testOutput>${project.build.directory}/jstd</testOutput -->
 				</configuration>
 				<executions>
 					<execution>
