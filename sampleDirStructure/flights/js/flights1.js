@@ -1,2 +1,2 @@
-define(["soilJS/utils/foo", "helpers/itinerary", "soilJS/core/errorHandler"],function(foo,itinerary,errorHandler, $){
+define(["soilJS/main", "helpers/itinerary", "jquery"],function(main,itinerary, $){
 });
