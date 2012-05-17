@@ -103,7 +103,7 @@
 				<version>1.3.2.5</version>
 				<configuration>
 					<basePath>${basedir}</basePath>
-					<config>test/jsTestDriver.conf</config>
+					<config>test/jsTestDriver-dist.conf</config>
 				</configuration>
 				<executions>
 					<execution>
