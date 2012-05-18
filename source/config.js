@@ -5,7 +5,7 @@ var require = (function(){
 					'soilJS' : CDNDomainPath + 'SoilJS/source',
 					'jquery' : CDNDomainPath + 'SoilJS/source/lib/jquery-1.7.2.min'
 				},
-				priority : [ "jquery"],
+				priority : [ "jquery", "soilJS/shieldDefine" ],
 				urlArgs : "bust=" + (new Date()).getTime()
 			};
 	})();
