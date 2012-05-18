@@ -4,7 +4,7 @@ TestMain.prototype.testMainReturns = function(queue) {
 	var main = null;
 	
 	//First step: Load dependencies and set scope variables for asserts
-	queue.call("Load Dependencies", function(callbacks) {
+	queue.call("Load main Dependencies", function(callbacks) {
 		var onload = callbacks.noop();
 		
 		(requirejsTestHelper())(["soilJS/main"], function(_main){
@@ -29,7 +29,7 @@ TestHelper.prototype.testHelperReturns = function(queue) {
 	var helper = null;
 	
 	//First step: Load dependencies and set scope variables for asserts
-	queue.call("Load Dependencies", function(callbacks) {
+	queue.call("Load helper Dependencies", function(callbacks) {
 		var onload = callbacks.noop();
 		
 		(requirejsTestHelper())(["soilJS/helper"], function(_helper){

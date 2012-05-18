@@ -90,15 +90,22 @@ define(function(){
 		 * @return {Object}
 		 */
 		var CurrentError = function() {
+			function isCDNError(msg, url, linenumber) {
+				return (msg == "Script error." && linenumber == 0);
+			}
 			return {
 				curMsg:"",
 				curUrl:"",
 				curLineNumber:"",
 				currLocationHref:window.location.href,
 				set:function(msg, url, linenumber) {
-					this.curMsg = msg;
 					this.curUrl = url;
-					this.curLineNumber = linenumber;
+					this.curLineNumber = linenumber;						
+					if(!isCDNError(msg, url, linenumber)) {
+						this.curMsg = msg;
+					} else {
+						this.curMsg = "Error not decribed because cross domain window.onerror restrictions.";
+					}
 				},
 				toString:function() {
 					return "Message=\"" + this.curMsg + "\"; Url=" + this.curUrl + "; LineNumber=" + this.curLineNumber + "; LocationHref=" + this.currLocationHref + ";";
