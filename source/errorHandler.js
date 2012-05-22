@@ -97,7 +97,8 @@ define(function(){
 				curMsg:"",
 				curUrl:"",
 				curLineNumber:"",
-				currLocationHref:window.location.href,
+				curLocationHref:window.location.href,
+				curStack:"",
 				set:function(msg, url, linenumber) {
 					this.curUrl = url;
 					this.curLineNumber = linenumber;						
@@ -107,8 +108,17 @@ define(function(){
 						this.curMsg = "Error not decribed because cross domain window.onerror restrictions.";
 					}
 				},
+				addToStack:function(msg) {
+					if(msg.substr(0,this.curStack.length) == this.curStack) {
+						msg = msg.substr(this.curStack.length, msg.length);						
+					}
+					this.curStack += msg;
+				},
+				clearStack:function() {
+					this.curStack = "";
+				},
 				toString:function() {
-					return "Message=\"" + this.curMsg + "\"; Url=" + this.curUrl + "; LineNumber=" + this.curLineNumber + "; LocationHref=" + this.currLocationHref + ";";
+					return "Message=\"" + this.curMsg + ((this.curStack != "") ? ";" + this.curStack : "") + "\"; Url=" + this.curUrl + "; LineNumber=" + this.curLineNumber + "; LocationHref=" + this.curLocationHref + ";";
 				}
 			}
 		}();
@@ -152,6 +162,9 @@ define(function(){
 				CurrentApplication.get();
 				send(this.toString());
 				return this.throwOverride(msg, url, linenumber);
+			},
+			addToStack:function(msg) {
+				CurrentError.addToStack(msg);
 			},
 			/**
 			 * Sobreescribe el toString de Object, y retorna un string en formato de log

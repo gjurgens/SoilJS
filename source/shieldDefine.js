@@ -10,7 +10,8 @@ define(["soilJS/errorHandler"], function(errorHandler){
 						try {
 							return def.apply(this, arguments);
 						} catch (ex) {
-							ex.message += "; module: " + module  + ", method: '" + name + "'";
+							ex.message += "; module: '" + module  + "', method: '" + name + "'";
+							errorHandler.addToStack(ex.message);
 							throw ex;
 						}
 					};
@@ -20,6 +21,7 @@ define(["soilJS/errorHandler"], function(errorHandler){
 		
 		object.soilJSShielded = true;
 	}
+	
 	if(!require.soilJSShielded) {
 		define = function(origDefine) {
 			return function() {
@@ -55,7 +57,7 @@ define(["soilJS/errorHandler"], function(errorHandler){
 							return orig.apply(this, arguments);				
 						} catch(e) {
 							e.message += "; module: '" + name + "'";
-							errorHandler.handler(e.message, e.fileName, e.number);
+							errorHandler.addToStack(e.message);
 							throw(e);				
 						}
 					}
@@ -67,5 +69,4 @@ define(["soilJS/errorHandler"], function(errorHandler){
 		}(define);
 	}
 	require.soilJSShielded = true;
-	console.log("shielded");
 })
