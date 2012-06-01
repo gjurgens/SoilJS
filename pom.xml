@@ -1,18 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>com.despegar.framework</groupId>
 		<artifactId>despegar-fwk</artifactId>
 		<version>1.4.51</version>
 	</parent>
-
 	<groupId>com.despegar.SoilJS</groupId>
 	<artifactId>SoilJS</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Despegar :: SoilJS</name>
-
 	<!-- SCM -->
 
 	<scm>
@@ -34,7 +31,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<repositories>
 		<repository>
 			<id>jstd-maven-plugin google code repo</id>
@@ -51,7 +47,7 @@
 		<plugins>
 
 			<plugin>
-				<inherited>false</inherited> 
+				<inherited>false</inherited>
 				<artifactId>exec-maven-plugin</artifactId>
 				<groupId>org.codehaus.mojo</groupId>
 				<executions>
@@ -86,15 +82,14 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0.2</version>
 				<configuration>
-				<source>1.6</source>
-				<target>1.6</target>
-				<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -114,14 +109,43 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
 			<!--plugin>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagBase>http://prodtest:8080/svn/SoilJS/tags/</tagBase>
-				</configuration>
+			<artifactId>maven-release-plugin</artifactId>
+			<configuration>
+			<tagBase>http://prodtest:8080/svn/SoilJS/tags/</tagBase>
+			</configuration>
 			</plugin-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask" classpath="${settings.localRepository}/com/googlecode/jslint4java/jslint4java-ant/1.4.2/jslint4java-ant-1.4.2.jar" />
+								<jslint options="white,browser,devel,undef,eqeqeq,plusplus,bitwise,regexp,strict,newcap,immed">
+									<predef>Ext,Utils</predef>
+									<formatter type="plain" />
+									<fileset dir="${basedir}/source" includes="**/*.js" excludes="lib/**/*.js"/>
+								</jslint>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.googlecode.jslint4java</groupId>
+						<artifactId>jslint4java-ant</artifactId>
+						<version>1.4.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 </project>

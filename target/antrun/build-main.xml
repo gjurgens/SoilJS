@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask" classpath="${settings.localRepository}/com/googlecode/jslint4java/jslint4java-ant/1.4.2/jslint4java-ant-1.4.2.jar"/>
+  <jslint options="white,browser,devel,undef,eqeqeq,plusplus,bitwise,regexp,strict,newcap,immed">
+    <predef>Ext,Utils</predef>
+    <formatter type="plain"/>
+    <fileset dir="/home/gjurgens/workspace/SoilJS/source" excludes="lib/**/*.js" includes="**/*.js"/>
+  </jslint>
+</target>
+</project>
