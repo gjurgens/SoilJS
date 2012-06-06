@@ -1,4 +1,4 @@
-define([ "soilJS/errorHandler" ], function(errorHandler) {
+define([ "soilJS/errorHandler" ], function (errorHandler) {
     "use strict";
     function shieldReturnedObject(object, module) {
         var name, method;
@@ -6,8 +6,8 @@ define([ "soilJS/errorHandler" ], function(errorHandler) {
         for (name in object) {
             method = object[name];
             if (typeof method === "function") {
-                object[name] = function(def, name) {
-                    return function() {
+                object[name] = function (def, name) {
+                    return function () {
                         try {
                             return def.apply(this, arguments);
                         } catch (ex) {
@@ -25,8 +25,8 @@ define([ "soilJS/errorHandler" ], function(errorHandler) {
     }
 
     if (!require.soilJSShielded) {
-        define = function(origDefine) {
-            return function() {
+        define = function (origDefine) {
+            return function () {
                 var callbackArgIndex = 2, name = "anonymous", deps = [];
 
                 // Allow for anonymous functions
@@ -43,16 +43,17 @@ define([ "soilJS/errorHandler" ], function(errorHandler) {
                     deps = arguments[callbackArgIndex - 1];
                 }
 
-                arguments[callbackArgIndex] = function(orig) {
-                    return function() {
+                arguments[callbackArgIndex] = function (orig) {
+                    return function () {
                         var i = 0;
-                        for (var arg in arguments) {
+                        for ( var arg in arguments) {
                             if (typeof arguments[arg] === "object"
                                     && (!arguments[arg].soilJSShielded)) {
                                 shieldReturnedObject(arguments[arg], deps[i]);
                             }
                             i++;
-                        };
+                        }
+                        ;
                         try {
                             return orig.apply(this, arguments);
                         } catch (e) {
